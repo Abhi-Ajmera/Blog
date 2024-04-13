@@ -9,7 +9,7 @@ const ThemeToggle = () => {
 
 	return (
 		<div
-			className="flex items-center justify-between w-9 h-4 sm:w-10 sm:h-5 rounded-full cursor-pointer bg-bgColorDark relative px-[2px] dark:bg-bgColor"
+			className="flex items-center justify-between sm:w-10 sm:h-5 w-8 h-4 rounded-full cursor-pointer bg-bgColorDark relative px-[2px] dark:bg-bgColor"
 			onClick={theme?.toggle}
 		>
 			<Image
@@ -19,7 +19,7 @@ const ThemeToggle = () => {
 				height={14}
 			/>
 			{/* ball */}
-			<div className="w-4 h-4 sm:w-5 sm:h-5 right-0 bg-bgColor rounded-full absolute dark:left-0 dark:bg-bgColorDark"></div>
+			<div className="sm:w-5 sm:h-5 w-4 h-4 right-0 bg-bgColor rounded-full absolute dark:left-0 dark:bg-bgColorDark"></div>
 			<Image
 				src={"/sun.png"}
 				alt=""

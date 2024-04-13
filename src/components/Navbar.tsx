@@ -30,7 +30,7 @@ const Navbar = () => {
 			{/* logo */}
 			<div className="flex-1 lg:text-center font-bold text-left text-xl lg:text-2xl xl:text-4xl">Bloggit !</div>
 			{/* Links */}
-			<div className="flex-1 flex gap-5 justify-center items-center lg:text-lg lg:gap-4 xl:text-xl">
+			<div className="flex-1 flex gap-5 items-center lg:text-lg lg:gap-4 xl:text-xl justify-end">
 				<ThemeToggle />
 				<Link
 					className="hidden sm:block"
