@@ -1,3 +1,17 @@
+import CardList from "@/components/CardList";
+import CategoryList from "@/components/CategoryList";
+import Featured from "@/components/Featured";
+import Menu from "@/components/Menu";
+
 export default function Home() {
-	return <main>Hello</main>;
+	return (
+		<div className="max-w-[100vw] overflow-x-hidden">
+			<Featured />
+			<CategoryList />
+			<div>
+				<CardList />
+				<Menu />
+			</div>
+		</div>
+	);
 }
