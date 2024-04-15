@@ -1,9 +1,17 @@
+import Image from "next/image";
 import Pagination from "./Pagination";
+import Card from "./Card";
 
 const CardList = () => {
 	return (
-		<div>
-			CardList
+		<div className=" flex-[5]">
+			<h1 className="my-8 text-3xl">Recent Posts</h1>
+			<div>
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+			</div>
 			<Pagination />
 		</div>
 	);

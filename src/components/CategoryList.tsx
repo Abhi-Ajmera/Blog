@@ -4,7 +4,7 @@ import Link from "next/link";
 const CategoryList = () => {
 	return (
 		<div>
-			<h1 className="my-12">Popular Caregories</h1>
+			<h1 className="my-12 text-3xl">Popular Caregories</h1>
 			<div className="flex flex-wrap justify-between gap-5">
 				<Link
 					href={"/blog?cat=style"}

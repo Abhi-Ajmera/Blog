@@ -8,7 +8,7 @@ export default function Home() {
 		<div className="max-w-[100vw] overflow-x-hidden">
 			<Featured />
 			<CategoryList />
-			<div>
+			<div className="flex gap-12">
 				<CardList />
 				<Menu />
 			</div>
