@@ -4,7 +4,7 @@ import MenuCategories from "./MenuCategories";
 
 const Menu = () => {
 	return (
-		<div className="flex-[2]">
+		<div className="flex-[2] hidden lg:block">
 			<MenuPost WithImg={false} />
 
 			<h2 className="text-softText dark:text-softTextDark text-sm font-normal mt-12">Discover By Topic</h2>

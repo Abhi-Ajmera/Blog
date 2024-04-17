@@ -4,7 +4,7 @@ const Featured = () => {
 	return (
 		<div className="mt-6">
 			{/*title  */}
-			<h1 className="text-4xl md:text-5xl lg:text-6xl text-center">Hey, Discover my stories and creative ideas.</h1>
+			<h1 className="text-5xl lg:text-6xl text-center">Hey, Discover my stories and creative ideas.</h1>
 			{/* post */}
 			<div className="mt-12 md:mt-16 flex items-center gap-12">
 				<div className="hidden md:block flex-1 relative h-[500px]">
