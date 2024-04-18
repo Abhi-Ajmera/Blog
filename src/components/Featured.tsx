@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const Featured = () => {
 	return (
-		<div className="mt-6">
+		<div className="mt-3">
 			{/*title  */}
-			<h1 className="text-5xl lg:text-6xl text-center">Hey, Discover my stories and creative ideas.</h1>
+			<h1 className="text-4xl lg:text-5xl text-center">Hey, Discover my stories and creative ideas.</h1>
 			{/* post */}
-			<div className="mt-12 md:mt-16 flex items-center gap-12">
+			<div className="mt-10 md:mt-11 flex items-center gap-12">
 				<div className="hidden md:block flex-1 relative h-[500px]">
 					<Image
 						src={"/p1.jpeg"}
@@ -17,7 +17,7 @@ const Featured = () => {
 				</div>
 				<div className="flex-1 flex flex-col gap-5">
 					<h1 className="text-2xl md:text-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-					<p className="text-xl font-light text-softText dark:text-softTextDark">
+					<p className="text-lg font-light text-softText dark:text-softTextDark">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam porro tempora facilis laborum voluptates
 						ex nulla, recusandae ullam deleniti, voluptate sed voluptatum
 					</p>

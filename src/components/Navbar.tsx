@@ -28,7 +28,9 @@ const Navbar = () => {
 				/>
 			</div>
 			{/* logo */}
-			<div className="flex-1 lg:text-center font-bold text-left text-xl lg:text-3xl xl:text-4xl">Bloggit !</div>
+			<div className="flex-1 lg:text-center font-bold text-left text-2xl lg:text-3xl xl:text-4xl">
+				<Link href={"/"}>Bloggit !</Link>
+			</div>
 			{/* Links */}
 			<div className="flex-1 flex gap-5 items-center lg:text-md lg:gap-4 xl:text-lg justify-end">
 				<ThemeToggle />
