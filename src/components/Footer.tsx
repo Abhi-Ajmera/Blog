@@ -7,11 +7,11 @@ const Footer = () => {
 			<div className="flex-1 flex flex-col gap-3">
 				<div className="flex items-center gap-2">
 					<Image
-						src={"/sun.png"}
+						src={"/Blog.png"}
 						alt=""
-						width={40}
-						height={40}
-						className="rounded-[50%] h-6 max-sm:w-6 sm:h-10 "
+						width={32}
+						height={32}
+						className="h-6 max-sm:w-6 sm:h-8 "
 					/>
 					<h1 className="text-lg sm:text-xl font-semibold">Bloggit !</h1>
 				</div>

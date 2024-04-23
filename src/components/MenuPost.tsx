@@ -20,7 +20,7 @@ const MenuPost: React.FC<Props> = ({ WithImg }) => {
 							<Image
 								src={"/p1.jpeg"}
 								alt=""
-								layout="fill"
+								fill
 								className="rounded-[50%] object-cover border-2 border-gray-500"
 							/>
 						</div>
@@ -45,7 +45,7 @@ const MenuPost: React.FC<Props> = ({ WithImg }) => {
 							<Image
 								src={"/p1.jpeg"}
 								alt=""
-								layout="fill"
+								fill
 								className="rounded-[50%] object-cover border-2 border-gray-500"
 							/>
 						</div>
@@ -70,7 +70,7 @@ const MenuPost: React.FC<Props> = ({ WithImg }) => {
 							<Image
 								src={"/p1.jpeg"}
 								alt=""
-								layout="fill"
+								fill
 								className="rounded-[50%] object-cover border-2 border-gray-500"
 							/>
 						</div>
@@ -95,7 +95,7 @@ const MenuPost: React.FC<Props> = ({ WithImg }) => {
 							<Image
 								src={"/p1.jpeg"}
 								alt=""
-								layout="fill"
+								fill
 								className="rounded-[50%] object-cover border-2 border-gray-500"
 							/>
 						</div>

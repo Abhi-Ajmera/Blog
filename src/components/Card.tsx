@@ -8,7 +8,7 @@ const Card = () => {
 				<Image
 					src={"/p1.jpeg"}
 					alt=""
-					layout="fill"
+					fill
 					className="object-cover"
 				/>
 			</div>

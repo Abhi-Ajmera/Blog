@@ -15,7 +15,7 @@ const page = () => {
 							<Image
 								src={"/p1.jpeg"}
 								alt=""
-								layout="fill"
+								fill
 								className="object-cover rounded-[50%]"
 							/>
 						</div>
@@ -29,7 +29,7 @@ const page = () => {
 					<Image
 						src={"/p1.jpeg"}
 						alt=""
-						layout="fill"
+						fill
 						className="object-cover"
 					/>
 				</div>
