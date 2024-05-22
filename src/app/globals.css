@@ -18,4 +18,5 @@
 
 .ql-blank::before {
 	color: #b3b3b1 !important;
+	font-style: normal !important;
 }

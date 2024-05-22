@@ -13,7 +13,9 @@ const Footer = () => {
 						height={32}
 						className="h-6 max-sm:w-6 sm:h-8 "
 					/>
-					<h1 className="text-lg sm:text-xl font-semibold">Bloggit !</h1>
+					<h1 className="text-lg sm:text-xl font-semibold bg-gradient-to-t from-[#2926FC] to-[#9998FD] text-transparent bg-clip-text">
+						Bloggit !
+					</h1>
 				</div>
 				<p className="text-xs sm:text-sm">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quam reprehenderit quisquam, officia{" "}

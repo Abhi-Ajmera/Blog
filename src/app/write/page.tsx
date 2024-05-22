@@ -42,37 +42,44 @@ const WritePage = () => {
 			<input
 				type="text"
 				placeholder="Title"
+				className="w-full bg-transparent border-none outline-none py-4 text-3xl"
 			/>
-			<div>
-				<button>
+			<div className="relative">
+				<button
+					className="bg-transparent text-xs flex items-center justify-center"
+					onClick={() => setOpen(!open)}
+				>
 					<Image
 						src={"/plus.png"}
 						alt=""
-						width={16}
-						height={16}
-						onClick={() => setOpen(!open)}
+						width={28}
+						height={28}
 					/>
 				</button>
 				{open && (
-					<div>
-						<button>
+					<div className="absolute top-0 left-11 flex gap-4">
+						<button className="bg-transparent flex items-center justify-center">
 							<Image
 								src={"/image.png"}
 								alt=""
-								width={16}
-								height={16}
+								width={28}
+								height={28}
 							/>
+						</button>
+						<button className="bg-transparent flex items-center justify-center">
 							<Image
 								src={"/external.png"}
 								alt=""
-								width={16}
-								height={16}
+								width={28}
+								height={28}
 							/>
+						</button>
+						<button className="bg-transparent flex items-center justify-center">
 							<Image
 								src={"/video.png"}
 								alt=""
-								width={16}
-								height={16}
+								width={28}
+								height={28}
 							/>
 						</button>
 					</div>
@@ -84,9 +91,12 @@ const WritePage = () => {
 					value={value}
 					onChange={setValue}
 					placeholder="Tell your story ..."
-					className="text-textColor dark:text-textColorDark"
+					className="text-textColor dark:text-textColorDark h-[400px] py-2"
 				/>
 			</div>
+			<button className="absolute bg-gradient-to-t from-[#2926FC] to-[#9998FD] text-white top-8 right-5 px-3 py-1 rounded-3xl hover:text-[#9998FD] hover:bg-clip-text hover:border border-[#9998FD]">
+				Publish
+			</button>
 		</div>
 	);
 };

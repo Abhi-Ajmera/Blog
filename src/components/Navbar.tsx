@@ -28,7 +28,7 @@ const Navbar = () => {
 				/>
 			</div>
 			{/* logo */}
-			<div className="flex-1 lg:text-center font-bold text-left text-2xl lg:text-3xl xl:text-4xl">
+			<div className="flex-1 lg:text-center font-bold text-left text-2xl lg:text-3xl xl:text-4xl bg-gradient-to-t from-[#2926FC] to-[#9998FD] text-transparent bg-clip-text">
 				<Link href={"/"}>Bloggit !</Link>
 			</div>
 			{/* Links */}
