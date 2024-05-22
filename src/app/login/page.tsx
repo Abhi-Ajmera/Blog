@@ -16,7 +16,10 @@ const Login = () => {
 				>
 					Sign in with Google
 				</div>
-				<div className="py-2 rounded-md border-none text-white hover:font-semibold cursor-pointer bg-black">
+				<div
+					className="py-2 rounded-md border-none text-white hover:font-semibold cursor-pointer bg-black"
+					onClick={() => signIn("github", { callbackUrl: "/" })}
+				>
 					Sign in with Github
 				</div>
 			</div>

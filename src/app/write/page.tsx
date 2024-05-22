@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -36,6 +37,11 @@ const WritePage = () => {
 		"color",
 		"code-block",
 	];
+
+	const { status } = useSession();
+	if (status === "loading") {
+		return <div>Loading ...</div>;
+	}
 
 	return (
 		<div>
