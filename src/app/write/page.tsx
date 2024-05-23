@@ -100,7 +100,7 @@ const WritePage = () => {
 					className="text-textColor dark:text-textColorDark h-[400px] py-2"
 				/>
 			</div>
-			<button className="absolute bg-gradient-to-t from-[#2926FC] to-[#9998FD] text-white top-8 right-5 px-3 py-1 rounded-3xl hover:text-[#9998FD] hover:bg-clip-text hover:border border-[#9998FD]">
+			<button className="absolute bg-gradient-to-t from-[#2926FC] to-[#9998FD] text-white top-8 right-5 px-3 py-1 rounded-3xl hover:text-[#9998FD] hover:bg-clip-text hover:border border-[#9998FD] max-sm:top-20 max-sm:text-xs">
 				Publish
 			</button>
 		</div>
