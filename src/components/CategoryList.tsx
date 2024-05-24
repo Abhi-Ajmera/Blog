@@ -15,6 +15,7 @@ const getData = async () => {
 
 const CategoryList = async () => {
 	const data = await getData();
+
 	return (
 		<div className="mt-10">
 			<h1 className="mb-6 text-3xl">Popular Caregories</h1>

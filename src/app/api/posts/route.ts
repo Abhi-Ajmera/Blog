@@ -1,13 +1,15 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
-export const GET = async (req) => {
-	const { searchParams } = new URL(req.url);
-	const page = searchParams.get("page") || 1;
+export const GET = async ({ url }) => {
+	const { searchParams } = new URL(url);
+
+	const pageNum = searchParams.get("page") || "1";
+
 	const POST_PER_PAGE = 4;
 
 	try {
-		const posts = await prisma.post.findMany({ take: POST_PER_PAGE, skip: POST_PER_PAGE * (page - 1) });
+		const posts = await prisma.post.findMany({ take: POST_PER_PAGE, skip: POST_PER_PAGE * (parseInt(pageNum) - 1) });
 
 		return NextResponse.json({ posts, status: 200 });
 	} catch (err) {
