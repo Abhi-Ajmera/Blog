@@ -12,7 +12,8 @@ const getData = async (page) => {
 };
 
 const CardList = async ({ page }) => {
-	const { posts } = await getData(page);
+	const { posts, count, POST_PER_PAGE } = await getData(page);
+
 	return (
 		<div className="flex-[5]">
 			<h1 className="mb-6 text-3xl">Recent Posts</h1>
@@ -22,7 +23,11 @@ const CardList = async ({ page }) => {
 					item={item}
 				/>
 			))}
-			<Pagination page={page} />
+			<Pagination
+				page={page}
+				count={count}
+				POST_PER_PAGE={POST_PER_PAGE}
+			/>
 		</div>
 	);
 };

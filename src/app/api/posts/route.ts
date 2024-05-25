@@ -9,9 +9,12 @@ export const GET = async ({ url }) => {
 	const POST_PER_PAGE = 4;
 
 	try {
-		const posts = await prisma.post.findMany({ take: POST_PER_PAGE, skip: POST_PER_PAGE * (parseInt(pageNum) - 1) });
+		const [posts, count] = await prisma.$transaction([
+			prisma.post.findMany({ take: POST_PER_PAGE, skip: POST_PER_PAGE * (parseInt(pageNum) - 1) }),
+			prisma.post.count(),
+		]);
 
-		return NextResponse.json({ posts, status: 200 });
+		return NextResponse.json({ posts, count, POST_PER_PAGE, status: 200 });
 	} catch (err) {
 		console.log(err);
 		return NextResponse.json({ message: "Something went wrong", status: 500 });
