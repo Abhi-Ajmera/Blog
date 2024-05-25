@@ -1,12 +1,18 @@
 import CardList from "@/components/CardList";
 import Menu from "@/components/Menu";
 
-const page = () => {
+const page = ({ searchParams }) => {
+	const page = parseInt(searchParams.page) || 1;
+	const { cat } = searchParams;
+
 	return (
 		<div>
-			<h1 className="bg-green-600 text-center font-bold tracking-wide text-lg py-1">Style Blog</h1>
+			<h1 className="bg-green-600 text-center font-bold tracking-wide text-lg py-1 capitalize">{cat} Blog</h1>
 			<div className="gap-12 mt-6 lg:flex">
-				<CardList />
+				<CardList
+					page={page}
+					cat={cat}
+				/>
 				<Menu />
 			</div>
 		</div>
