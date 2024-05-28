@@ -3,6 +3,15 @@ export interface ThemeContextType {
 	toggle: () => void;
 }
 
+export interface searchParamsType {
+	cat: string;
+	page: string;
+}
+
+export interface paramsType {
+	slug: string;
+}
+
 export interface CategoryTypes {
 	id: number;
 	slug: string;
@@ -21,4 +30,20 @@ export interface postType {
 	views: number;
 	catSlug: string;
 	userEmail: string;
+}
+
+export interface commentsType {
+	id: string;
+	createdAt: string;
+	desc: string;
+	userEmail: string;
+	postSlug: string;
+	user: {
+		createdAt: string;
+		email: string;
+		id: string;
+		image: string;
+		name: string;
+		updatedAt: string;
+	};
 }

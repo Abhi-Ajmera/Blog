@@ -1,8 +1,9 @@
+import { paramsType } from "@/types/types";
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
 // Get single Post using slug
-export const GET = async (req, { params }) => {
+export const GET = async (req: NextResponse, { params }: { params: paramsType }) => {
 	const { slug } = params;
 	try {
 		const post = await prisma.post.findUnique({ where: { slug }, include: { user: true } });

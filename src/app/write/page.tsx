@@ -2,10 +2,12 @@
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 
 const WritePage = () => {
+	const router = useRouter();
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState("");
 
@@ -41,6 +43,10 @@ const WritePage = () => {
 	const { status } = useSession();
 	if (status === "loading") {
 		return <div>Loading ...</div>;
+	}
+
+	if (status === "unauthenticated") {
+		router.push("/");
 	}
 
 	return (

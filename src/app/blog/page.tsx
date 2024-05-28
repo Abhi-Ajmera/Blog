@@ -1,7 +1,8 @@
 import CardList from "@/components/CardList";
 import Menu from "@/components/Menu";
+import { searchParamsType } from "@/types/types";
 
-const page = ({ searchParams }) => {
+const page = ({ searchParams }: { searchParams: searchParamsType }) => {
 	const page = parseInt(searchParams.page) || 1;
 	const { cat } = searchParams;
 

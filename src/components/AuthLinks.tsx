@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 
 const AuthLinks = () => {
 	const theme = useContext(ThemeContext);
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<Boolean>(false);
 
 	const { status } = useSession();
 

@@ -1,7 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const Pagination = ({ page, count, POST_PER_PAGE }) => {
+interface propsTypes {
+	page: number;
+	count: number;
+	POST_PER_PAGE: number;
+}
+
+const Pagination = ({ page, count, POST_PER_PAGE }: propsTypes) => {
 	const router = useRouter();
 
 	const hasPrev = POST_PER_PAGE * (page - 1) > 0;

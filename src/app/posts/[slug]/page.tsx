@@ -1,8 +1,9 @@
 import Comments from "@/components/Comments";
 import Menu from "@/components/Menu";
+import { paramsType } from "@/types/types";
 import Image from "next/image";
 
-const getData = async (slug) => {
+const getData = async (slug: string) => {
 	const res = await fetch(`${process.env.baseURL}/api/posts/${slug}`, { cache: "no-store" });
 
 	if (!res.ok) {
@@ -11,15 +12,18 @@ const getData = async (slug) => {
 	return res.json();
 };
 
-const page = async ({ params }) => {
+const page = async ({ params }: { params: paramsType }) => {
 	const { slug } = params;
 	const { post } = await getData(slug);
-
+	let markup;
+	if (post !== null) {
+		markup = { __html: post.desc };
+	}
 	return (
 		<div>
 			<div className="md:flex items-center gap-12">
 				<div className="flex-1 flex flex-col gap-8 justify-center">
-					<h1 className="text-justify text-3xl md:text-4xl">{post?.title}</h1>
+					<h1 className="text-justify text-3xl md:text-4xl">{post.title}</h1>
 					<div className="flex items-center gap-4">
 						{post.user && (
 							<div className="w-12 h-12 relative">
@@ -33,7 +37,7 @@ const page = async ({ params }) => {
 						)}
 						<div className="flex flex-col text-softText dark:text-softTextDark">
 							<span className="font-bold md:text-lg">{post.user.name}</span>
-							<span className="text-sm">{post?.createdAt?.substring(0, 10)}</span>
+							<span className="text-sm">{post.createdAt?.substring(0, 10)}</span>
 						</div>
 					</div>
 				</div>
@@ -53,9 +57,9 @@ const page = async ({ params }) => {
 				<div className="lg:flex-[5] mt-8 lg:mt-12">
 					<div
 						className="flex flex-col gap-2"
-						dangerouslySetInnerHTML={{ __html: post?.desc }}
+						dangerouslySetInnerHTML={markup}
 					/>
-					<Comments />
+					<Comments postSlug={slug} />
 				</div>
 				<Menu />
 			</div>

@@ -1,7 +1,7 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
-export const GET = async ({ url }) => {
+export const GET = async ({ url }: NextResponse) => {
 	const { searchParams } = new URL(url);
 
 	const pageNum = searchParams.get("page") || "1";
