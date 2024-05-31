@@ -1,10 +1,11 @@
 import Comments from "@/components/Comments";
 import Menu from "@/components/Menu";
 import { paramsType } from "@/types/types";
+import reverseString from "@/utils/reverse";
 import Image from "next/image";
 
 const getData = async (slug: string) => {
-	const res = await fetch(`${process.env.baseURL}/api/posts/${slug}`, { cache: "no-store" });
+	const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${slug}`, { cache: "no-store" });
 
 	if (!res.ok) {
 		throw new Error("Failed");
@@ -23,12 +24,12 @@ const page = async ({ params }: { params: paramsType }) => {
 		<div>
 			<div className="md:flex items-center gap-12">
 				<div className="flex-1 flex flex-col gap-8 justify-center">
-					<h1 className="text-justify text-3xl md:text-4xl">{post.title}</h1>
+					<h1 className="text-justify text-3xl md:text-4xl">{post?.title}</h1>
 					<div className="flex items-center gap-4">
-						{post.user && (
+						{post?.user && (
 							<div className="w-12 h-12 relative">
 								<Image
-									src={post.user.image}
+									src={post?.user?.image}
 									alt=""
 									fill
 									className="object-cover rounded-[50%]"
@@ -36,18 +37,18 @@ const page = async ({ params }: { params: paramsType }) => {
 							</div>
 						)}
 						<div className="flex flex-col text-softText dark:text-softTextDark">
-							<span className="font-bold md:text-lg">{post.user.name}</span>
-							<span className="text-sm">{post.createdAt?.substring(0, 10)}</span>
+							<span className="font-bold md:text-lg">{post?.user?.name}</span>
+							<span className="text-sm">{reverseString(post?.createdAt?.substring(0, 10))}</span>
 						</div>
 					</div>
 				</div>
-				{post.img && (
+				{post?.img && (
 					<div className="hidden md:block flex-1 h-80 w-80 relative">
 						<Image
-							src={post.img}
+							src={post?.img}
 							alt=""
 							fill
-							className="object-cover"
+							className="object-contain hover:scale-125"
 						/>
 					</div>
 				)}

@@ -1,5 +1,6 @@
 "use client";
 import { commentsType } from "@/types/types";
+import reverseString from "@/utils/reverse";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +20,10 @@ const commentFetch = async (url: string | URL | Request) => {
 
 const Comments = ({ postSlug }: { postSlug: string }) => {
 	const { status } = useSession();
-	const { data, mutate, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, commentFetch);
+	const { data, mutate, isLoading } = useSWR(
+		`${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${postSlug}`,
+		commentFetch
+	);
 	const comments = data?.comments;
 
 	const [desc, setDesc] = useState<string>("");
@@ -69,7 +73,7 @@ const Comments = ({ postSlug }: { postSlug: string }) => {
 									/>
 									<div className="flex flex-col text-softText dark:text-softTextDark gap-[2px]">
 										<span className="font-bold">{item.user.name}</span>
-										<span className="text-xs">{item.createdAt}</span>
+										<span className="text-xs">{reverseString(item.createdAt.substring(0, 10))}</span>
 									</div>
 								</div>
 								<p className="text-sm font-light">{item.desc}</p>

@@ -1,10 +1,11 @@
-import Image from "next/image";
 import Pagination from "./Pagination";
 import Card from "./Card";
 import { postType } from "@/types/types";
 
 const getData = async (page: number, cat: string) => {
-	const res = await fetch(`${process.env.baseURL}/api/posts?page=${page}&cat=${cat}`, { cache: "no-store" });
+	const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts?page=${page}&cat=${cat}`, {
+		cache: "no-store",
+	});
 
 	if (!res.ok) {
 		throw new Error("Failed");

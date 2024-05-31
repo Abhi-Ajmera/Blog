@@ -56,12 +56,7 @@ const Footer = () => {
 					>
 						Blog
 					</Link>
-					<Link
-						href={"/"}
-						className="text-sm hover:underline"
-					>
-						About
-					</Link>
+					
 					<Link
 						href={"/"}
 						className="text-sm hover:underline"
