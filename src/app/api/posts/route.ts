@@ -16,12 +16,13 @@ export const GET = async ({ url }: NextResponse) => {
 	};
 
 	try {
-		const [posts, count] = await prisma.$transaction([
+		const [posts, count, popular] = await prisma.$transaction([
 			prisma.post.findMany(query),
 			prisma.post.count({ where: query.where }),
+			prisma.post.findMany({ take: 6, include: { user: true }, orderBy: [{ views: "desc" }] }),
 		]);
 
-		return NextResponse.json({ posts, count, POST_PER_PAGE, status: 200 });
+		return NextResponse.json({ posts, count, popular, POST_PER_PAGE, status: 200 });
 	} catch (err) {
 		console.log(err);
 		return NextResponse.json({ message: "Something went wrong", status: 500 });

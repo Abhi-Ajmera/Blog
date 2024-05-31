@@ -1,17 +1,13 @@
-import Link from "next/link";
 import MenuPost from "./MenuPost";
-import MenuCategories from "./MenuCategories";
+import CategoryList from "./CategoryList";
 
 const Menu = () => {
 	return (
 		<div className="flex-[2] hidden lg:block">
-			<MenuPost WithImg={false} />
-
-			<h2 className="text-softText dark:text-softTextDark text-sm font-normal mt-12">Discover By Topic</h2>
-			<h1 className="text-2xl">Categories</h1>
-			<MenuCategories />
-
-			<MenuPost WithImg={true} />
+			<MenuPost />
+			<h3 className="text-softText dark:text-softTextDark text-sm font-normal mt-12">Discover By Topic</h3>
+			<h3 className="text-2xl">Categories</h3>
+			<CategoryList home={false} />
 		</div>
 	);
 };

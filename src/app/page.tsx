@@ -10,7 +10,8 @@ export default function Home({ searchParams }: { searchParams: searchParamsType 
 	return (
 		<div className="max-w-[100vw] overflow-x-hidden">
 			<Featured />
-			<CategoryList />
+			<CategoryList home={true} />
+			
 			<div className="gap-12 mt-12 lg:flex">
 				<CardList
 					page={page}

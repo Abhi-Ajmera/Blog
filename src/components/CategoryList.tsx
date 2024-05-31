@@ -13,19 +13,22 @@ const getData = async () => {
 	return res.json();
 };
 
-const CategoryList = async () => {
+const CategoryList = async ({ home }: { home: boolean }) => {
 	const data = await getData();
 
 	return (
 		<div className="mt-10">
-			<h1 className="mb-6 text-3xl">Popular Caregories</h1>
-			<div className="flex flex-wrap justify-between gap-5">
+			{home && <h1 className="mb-6 text-3xl">Popular Caregories</h1>}
+			<div className={twMerge(home && "flex flex-wrap justify-between gap-5", !home && "my-6 flex flex-wrap gap-3")}>
 				{data.map((item: CategoryTypes) => (
 					<Link
 						key={item.id}
 						href={`/blog?cat=${item.slug}`}
 						className={twMerge(
-							"flex items-center gap-3 capitalize h-20 justify-center rounded-lg text-softBgDark  w-[105%] sm:w-[45%] md:w-[30%] lg:w-[14%]",
+							"text-softBgDark",
+							home &&
+								"flex items-center gap-3 capitalize h-20 justify-center rounded-lg   w-[105%] sm:w-[45%] md:w-[30%] lg:w-[14%]",
+							!home && "px-2 py-1 rounded-xl capitalize text-sm",
 							item.title === "style" && "bg-blue-200",
 							item.title === "fashion" && "bg-pink-200",
 							item.title === "food" && "bg-green-200",
@@ -34,7 +37,7 @@ const CategoryList = async () => {
 							item.title === "coding" && "bg-purple-200"
 						)}
 					>
-						{item.img && (
+						{item.img && home && (
 							<Image
 								src={item.img}
 								alt={item.title}

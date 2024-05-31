@@ -18,7 +18,7 @@ const page = async ({ params }: { params: paramsType }) => {
 	const { post } = await getData(slug);
 	let markup;
 	if (post !== null) {
-		markup = { __html: post.desc };
+		markup = { __html: post?.desc };
 	}
 	return (
 		<div>
