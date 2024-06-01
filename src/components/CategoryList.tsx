@@ -19,33 +19,22 @@ const CategoryList = async ({ home }: { home: boolean }) => {
 	return (
 		<div className="mt-10">
 			{home && <h1 className="mb-6 text-3xl">Popular Caregories</h1>}
-			<div className={twMerge(home && "flex flex-wrap justify-between gap-5", !home && "my-6 flex flex-wrap gap-3")}>
+			<div className={twMerge(home && "flex flex-wrap justify-between gap-4", !home && "my-6 flex flex-wrap gap-3")}>
 				{data.map((item: CategoryTypes) => (
 					<Link
 						key={item.id}
 						href={`/blog?cat=${item.slug}`}
 						className={twMerge(
 							"text-softBgDark",
-							home &&
-								"flex items-center gap-3 capitalize h-20 justify-center rounded-lg   w-[105%] sm:w-[45%] md:w-[30%] lg:w-[14%]",
-							!home && "px-2 py-1 rounded-xl capitalize text-sm",
-							item.title === "style" && "bg-blue-200",
 							item.title === "fashion" && "bg-pink-200",
-							item.title === "food" && "bg-green-200",
-							item.title === "travel" && "bg-red-200",
-							item.title === "culture" && "bg-yellow-200",
-							item.title === "coding" && "bg-purple-200"
+							item.title === "travel" && "bg-green-200",
+							item.title === "workout" && "bg-yellow-200",
+							item.title === "coding" && "bg-cyan-200",
+							home &&
+								"flex items-center gap-2 capitalize h-20 justify-center rounded-lg  w-[105%] sm:w-[45%] lg:w-[20%]",
+							!home && "px-2 py-1 rounded-xl capitalize text-sm"
 						)}
 					>
-						{item.img && home && (
-							<Image
-								src={item.img}
-								alt={item.title}
-								width={32}
-								height={32}
-								className="rounded-[50%] h-8"
-							/>
-						)}
 						<span>{item.title}</span>
 					</Link>
 				))}

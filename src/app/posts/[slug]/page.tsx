@@ -48,7 +48,7 @@ const page = async ({ params }: { params: paramsType }) => {
 							src={post?.img}
 							alt=""
 							fill
-							className="object-contain hover:scale-125"
+							className="object-contain"
 						/>
 					</div>
 				)}

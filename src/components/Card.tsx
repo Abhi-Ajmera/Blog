@@ -2,6 +2,7 @@ import { postType } from "@/types/types";
 import reverseString from "@/utils/reverse";
 import Image from "next/image";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 const Card = ({ item }: { item: postType }) => {
 	let markup;
@@ -23,7 +24,17 @@ const Card = ({ item }: { item: postType }) => {
 			<div className="flex-1 flex flex-col gap-7 justify-center">
 				<div>
 					<span className="text-gray-500">{reverseString(item.createdAt.substring(0, 10))} - </span>
-					<span className="text-green-600 font-medium">{item.catSlug.toUpperCase()}</span>
+					<span
+						className={twMerge(
+							"font-medium",
+							item.catSlug === "fashion" && "text-pink-200",
+							item.catSlug === "travel" && "text-green-200",
+							item.catSlug === "workout" && "text-yellow-200",
+							item.catSlug === "coding" && "text-cyan-200"
+						)}
+					>
+						{item.catSlug.toUpperCase()}
+					</span>
 				</div>
 				<Link href={`/posts/${item.slug}`}>
 					<h1 className="text-2xl font-semibold capitalize">{item.title}</h1>

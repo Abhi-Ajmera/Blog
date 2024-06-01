@@ -27,20 +27,19 @@ const WritePage = () => {
 	const storage = getStorage(app);
 
 	const router = useRouter();
-	const [open, setOpen] = useState<boolean>(false);
 	const [title, setTitle] = useState<string>("");
 	const [cat, setCat] = useState<string>("");
 	const [desc, setDesc] = useState<string>("");
 	const [file, setFile] = useState<File | null>(null);
-	const [fileUploading, setFileUploading] = useState<string>();
 	const [mediaUrl, setMediaUrl] = useState<string>();
-	const [error, setError] = useState<string>();
+	const [message, setMessage] = useState<string>();
+	const imgTypes = ["image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp"];
 
 	useEffect(() => {
 		const upload = () => {
 			if (file === null) return;
 
-			const name = new Date().getTime() + file.name;
+			const name = slugify(file.name) + " " + new Date().getTime();
 			const storageRef = ref(storage, name);
 			const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -48,13 +47,13 @@ const WritePage = () => {
 				"state_changed",
 				(snapshot) => {
 					const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					setFileUploading("Uploading " + progress + "%");
+					setMessage("Uploading " + progress + "%");
 					if (progress == 100) {
-						setFileUploading("Uploading Completed");
+						setMessage("Uploading Completed");
 					}
 				},
 				(error) => {
-					setError(error.message);
+					setMessage(error.message);
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -73,11 +72,23 @@ const WritePage = () => {
 			.replace(/[^a-z0-9]+/g, "-");
 
 	const handleSubmit = async () => {
+		if (title === "") {
+			setMessage("Title is required");
+			return;
+		}
+		if (cat === "") {
+			setMessage("Category is required");
+			return;
+		}
 		if (!mediaUrl) {
-			setError("File is Uploading");
+			setMessage("File is required or Uploading");
+			return;
+		}
+		if (desc === "") {
+			setMessage("Description is required");
 			return;
 		} else {
-			const res = await fetch("/api/posts", {
+			await fetch("/api/posts", {
 				method: "POST",
 				body: JSON.stringify({
 					slug: slugify(title),
@@ -87,7 +98,7 @@ const WritePage = () => {
 					catSlug: slugify(cat),
 				}),
 			});
-			setError("Blog Created Successfully");
+			setMessage("Blog Created Successfully");
 			setTimeout(() => router.push("/"), 3000);
 		}
 	};
@@ -165,62 +176,42 @@ const WritePage = () => {
 					</option>
 				))}
 			</select>
-			<div className="text-lg text-green-600">
-				{fileUploading && fileUploading} <br /> {error && error}
-			</div>
+			<div className="text-lg my-2 text-green-600">{message && message}</div>
 			<div className="relative">
-				<button
-					className="mt-4 bg-transparent text-xs flex items-center justify-center"
-					onClick={() => setOpen(!open)}
-				>
-					<Image
-						src={"/plus.png"}
-						alt=""
-						width={28}
-						height={28}
-					/>
-				</button>
-				{open && (
-					<div className="absolute top-0 left-11 flex gap-4 cursor-pointer">
-						<input
-							type="file"
-							name="imageInput"
-							id="imageInput"
-							onChange={(e) => {
-								if (e.target.files) {
-									setFile(e.target.files[0]);
+				<input
+					className="mt-4 bg-transparent text-xs hidden"
+					type="file"
+					name="imageInput"
+					id="imageInput"
+					onChange={(e) => {
+						if (e.target.files) {
+							const imgUpload = e.target.files[0];
+							if (imgTypes.some((x) => x === imgUpload.type)) {
+								if (imgUpload.size <= 5242880) {
+									setFile(imgUpload);
+									setMessage("Upload Successfully");
+								} else {
+									setMessage("Image size should be less than 5 MB");
+									e.target.files = null;
 								}
-							}}
-							className="hidden"
+							} else {
+								setMessage("Image should be in JPG or PNG format");
+								e.target.files = null;
+							}
+						}
+					}}
+				/>
+				<button className="bg-transparent">
+					<label htmlFor="imageInput">
+						<Image
+							src={"/plus.png"}
+							alt=""
+							width={28}
+							height={28}
 						/>
-						<button className="bg-transparent flex items-center justify-center">
-							<label htmlFor="imageInput">
-								<Image
-									src={"/image.png"}
-									alt=""
-									width={28}
-									height={28}
-								/>
-							</label>
-						</button>
-						<button className="bg-transparent flex items-center justify-center">
-							<Image
-								src={"/external.png"}
-								alt=""
-								width={28}
-								height={28}
-							/>
-						</button>
-						<button className="bg-transparent flex items-center justify-center">
-							<Image
-								src={"/video.png"}
-								alt=""
-								width={28}
-								height={28}
-							/>
-						</button>
-					</div>
-				)}
+					</label>
+				</button>
+
 				<ReactQuill
 					theme="bubble"
 					modules={quillModules}
@@ -228,7 +219,7 @@ const WritePage = () => {
 					value={desc}
 					onChange={setDesc}
 					placeholder="Write your blog here"
-					className="text-textColor dark:text-textColorDark h-[400px] py-2"
+					className="text-textColor dark:text-textColorDark h-[400px] py-2 text-wrap"
 				/>
 			</div>
 		</div>

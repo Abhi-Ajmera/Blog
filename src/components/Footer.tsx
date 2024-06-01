@@ -56,9 +56,9 @@ const Footer = () => {
 					>
 						Blog
 					</Link>
-					
+
 					<Link
-						href={"/"}
+						href={"/contact"}
 						className="text-sm hover:underline"
 					>
 						Contact

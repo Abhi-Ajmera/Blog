@@ -66,7 +66,7 @@ const Navbar = () => {
 				/>
 				<Link
 					className="hidden sm:block"
-					href={"/"}
+					href={"/contact"}
 				>
 					Contact
 				</Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
 							onClick={() => setOpen(!open)}
 						/>
 						<Link href="/">Home</Link>
-						<Link href="/">Contact</Link>
+						<Link href={"/contact"}>Contact</Link>
 						<AuthLinks />
 					</div>
 				)}

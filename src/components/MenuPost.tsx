@@ -2,6 +2,7 @@ import { postType } from "@/types/types";
 import reverseString from "@/utils/reverse";
 import Image from "next/image";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 const getData = async (slug: string) => {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${slug}`, { cache: "no-store" });
@@ -39,7 +40,15 @@ const MenuPost = async () => {
 							)}
 						</div>
 						<div className="flex-[4] flex flex-col gap-[3px]">
-							<span className="text-xs font-normal px-2 text-black bg-red-200 w-max rounded-xl capitalize">
+							<span
+								className={twMerge(
+									"text-xs font-normal px-2 text-black w-max rounded-xl capitalize",
+									popular.catSlug === "fashion" && "bg-pink-200",
+									popular.catSlug === "travel" && "bg-green-200",
+									popular.catSlug === "workout" && "bg-yellow-200",
+									popular.catSlug === "coding" && "bg-cyan-200"
+								)}
+							>
 								{popular.catSlug}
 							</span>
 							<h3 className="text-sm font-medium text-softText dark:text-softTextDark">{popular.title}</h3>
