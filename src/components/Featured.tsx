@@ -17,10 +17,10 @@ const Featured = async () => {
 	const featured: postType = popular[random];
 
 	return (
-		<div className="mt-3 h-[calc(100vh-140px)] flex flex-col justify-around">
-			<h1 className="text-4xl lg:text-5xl text-center">Hey, Discover stories and creative ideas.</h1>
-			<div className="mt-10 md:mt-11 flex items-center gap-12">
-				<div className="hidden md:block flex-1 relative h-[500px]">
+		<div className="mt-3 md:h-[calc(100vh-100px)] flex flex-col justify-around">
+			<h1 className="mt-3 text-4xl lg:text-5xl text-center">Hey, Discover stories and creative ideas.</h1>
+			<div className="mt-10 md:mt-11 md:flex items-center gap-12">
+				<div className="flex-1 relative max-md:h-[360px] h-[500px] max-md:mb-6">
 					{featured.img && (
 						<Image
 							src={featured.img}

@@ -1,7 +1,7 @@
 import CategoryList from "@/components/CategoryList";
-import Featured from "@/components/Featured";
 import { searchParamsType } from "@/types/types";
 import dynamic from "next/dynamic";
+const Featured = dynamic(() => import("@/components/Featured"), { ssr: false });
 const CardList = dynamic(() => import("@/components/CardList"));
 const Menu = dynamic(() => import("@/components/Menu"));
 
