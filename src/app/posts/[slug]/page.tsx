@@ -30,7 +30,7 @@ const page = async ({ params }: { params: paramsType }) => {
 							<div className="w-12 h-12 relative">
 								<Image
 									src={post?.user?.image}
-									alt=""
+									alt={post?.user?.name}
 									fill
 									className="object-cover rounded-[50%]"
 								/>
@@ -46,7 +46,7 @@ const page = async ({ params }: { params: paramsType }) => {
 					<div className="hidden md:block flex-1 h-80 w-80 relative">
 						<Image
 							src={post?.img}
-							alt=""
+							alt={post?.title}
 							fill
 							className="object-contain"
 						/>

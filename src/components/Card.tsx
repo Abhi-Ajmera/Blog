@@ -15,7 +15,7 @@ const Card = ({ item }: { item: postType }) => {
 				<div className="md:flex-1 w-96 h-96 relative">
 					<Image
 						src={item.img}
-						alt=""
+						alt={item.title}
 						fill
 						className="object-contain"
 					/>

@@ -1,9 +1,9 @@
 import { auth } from "@/auth";
 import prisma from "@/utils/connect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // Get all comments for a Post
-export const GET = async ({ url }: NextResponse) => {
+export const GET = async ({ url }: NextRequest) => {
 	const { searchParams } = new URL(url);
 	const postSlug = searchParams.get("postSlug");
 
@@ -21,7 +21,7 @@ export const GET = async ({ url }: NextResponse) => {
 };
 
 // create a new comment
-export const POST = async (req: NextResponse) => {
+export const POST = async (req: NextRequest) => {
 	const session = await auth();
 
 	if (!session) {

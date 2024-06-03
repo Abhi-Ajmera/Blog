@@ -1,9 +1,9 @@
 import { paramsType } from "@/types/types";
 import prisma from "@/utils/connect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // Get single Post using slug
-export const GET = async (req: NextResponse, { params }: { params: paramsType }) => {
+export const GET = async (req: NextRequest, { params }: { params: paramsType }) => {
 	const { slug } = params;
 	try {
 		const post = await prisma.post.update({

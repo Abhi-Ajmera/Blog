@@ -1,8 +1,9 @@
-import CardList from "@/components/CardList";
 import CategoryList from "@/components/CategoryList";
 import Featured from "@/components/Featured";
-import Menu from "@/components/Menu";
 import { searchParamsType } from "@/types/types";
+import dynamic from "next/dynamic";
+const CardList = dynamic(() => import("@/components/CardList"));
+const Menu = dynamic(() => import("@/components/Menu"));
 
 export default function Home({ searchParams }: { searchParams: searchParamsType }) {
 	const page = parseInt(searchParams.page) || 1;

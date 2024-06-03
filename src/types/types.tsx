@@ -30,7 +30,7 @@ export interface postType {
 	views: number;
 	catSlug: string;
 	userEmail: string;
-	user?: {
+	user: {
 		createdAt: string;
 		email: string;
 		id: string;
@@ -46,7 +46,7 @@ export interface commentsType {
 	desc: string;
 	userEmail: string;
 	postSlug: string;
-	user?: {
+	user: {
 		createdAt: string;
 		email: string;
 		id: string;

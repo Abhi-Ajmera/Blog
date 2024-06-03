@@ -186,6 +186,7 @@ const WritePage = () => {
 					onChange={(e) => {
 						if (e.target.files) {
 							const imgUpload = e.target.files[0];
+
 							if (imgTypes.some((x) => x === imgUpload.type)) {
 								if (imgUpload.size <= 5242880) {
 									setFile(imgUpload);

@@ -17,7 +17,7 @@ const Featured = async () => {
 	const featured: postType = popular[random];
 
 	return (
-		<div className="mt-3">
+		<div className="mt-3 h-[calc(100vh-140px)] flex flex-col justify-around">
 			<h1 className="text-4xl lg:text-5xl text-center">Hey, Discover stories and creative ideas.</h1>
 			<div className="mt-10 md:mt-11 flex items-center gap-12">
 				<div className="hidden md:block flex-1 relative h-[500px]">
